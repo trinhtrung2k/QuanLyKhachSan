@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddPaymentInvoiceActivity"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="5dp"
+    android:background="@drawable/edittext_background"
+    android:id="@+id/addPaymentInvoice">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_addPayment"
+        android:background="@color/purple_700"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Nhập thông tin hoá đơn"
+        app:titleTextColor="#D3AC1B"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B3FB9F"
+        android:padding="8dp"
+        android:layout_gravity="center"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã hoá đơn:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alice" />
+
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:id="@+id/add_payment_mahd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text|textCapCharacters"
+                android:textSize="16sp"
+                android:fontFamily="@font/alice" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên hoá đơn:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alice" />
+
+
+              <EditText
+                  android:layout_marginTop="10dp"
+                  android:textColor="@color/black"
+                  android:textStyle="bold"
+                  android:id="@+id/add_payment_tenhd"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:inputType="text|textCapCharacters"             android:textSize="16sp"
+                  android:fontFamily="@font/alice" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã dịch vụ:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alice" />
+
+
+            <!--    <EditText
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:id="@+id/add_hire_soPhong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/alice" />-->
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinnerMaDV_Payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:smsp_isSearchable="true"
+                app:smsp_enableFloatingLabel="false"
+                app:smsp_floatingLabelColor="#FFE57F"
+                app:smsp_hint="Mã dịch vụ"
+                app:smsp_hintColor="#388E3C"
+                app:smsp_searchHeaderText="Mã dịch vụ"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_itemListHintBackgroundColor="#808080"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_selectedItemListColor="#C1625A" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã khách hàng:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alice" />
+
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinnerMaKH_Payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:smsp_isSearchable="true"
+                app:smsp_enableFloatingLabel="false"
+                app:smsp_floatingLabelColor="#FFE57F"
+                app:smsp_hint="Mã khách hàng"
+                app:smsp_hintColor="#388E3C"
+                app:smsp_searchHeaderText="Mã Khách Hàng"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_itemListHintBackgroundColor="#808080"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_selectedItemListColor="#C1625A" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ngày lập hoá đơn:"
+                android:textSize="16sp"
+                android:fontFamily="@font/alice" />
+
+            <TextView
+
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:id="@+id/add_payment_ngayLapHD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:textSize="16sp"
+                android:fontFamily="@font/alice" />
+            <ImageView
+                android:id="@+id/choose_add_ngaylaphd"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_today_24"/>
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vui lòng nhập đầy đủ thông tin"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:visibility="gone"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_add_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="20dp"
+                android:text="Thêm"
+                android:backgroundTint="@color/black"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/drawable/account.xml" value="0.15416666666666667" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/layout/activity_add_customer.xml" value="0.17291666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/layout/activity_edit_staff.xml" value="0.165625" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/layout/fragment_customer.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/layout/item_room.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan-master/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/drawable/account.xml" value="0.2169230769230769" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_customer.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_hire.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_payment_invoice.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_product.xml" value="0.17962962962962964" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_room.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_service.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_staff.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_add_worker.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_bill_detail.xml" value="0.33" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_bill_room_detail.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_customer.xml" value="0.33" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_hire.xml" value="0.33" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_product.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_room.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_service.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_staff.xml" value="0.17447916666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_timekeeping.xml" value="0.36666666666666664" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_timekeeping_detail.xml" value="0.20102564102564102" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_edit_worker.xml" value="0.36666666666666664" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_home.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_login.xml" value="0.17962962962962964" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/activity_salary_detail.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/app_bar_main.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_bill.xml" value="0.18" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_customer.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_hire.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_logout.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_payment_invoice.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_product.xml" value="0.13854166666666667" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_profile.xml" value="0.12864583333333332" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_room.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_salary.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_service.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_staff.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/fragment_worker.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_bill_room.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_customer.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_hire.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_payment.xml" value="0.25" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_room.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_service.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/item_staff.xml" value="0.18854166666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/layout_dialog_print_pdf.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/timekeeing_detail_item.xml" value="0.13854166666666667" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/layout/timekeeping_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/BuilderAppAndroid/QuanLyKhachSan/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

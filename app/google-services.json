@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "910247481153",
+    "project_id": "quanlykhachsan-3309a",
+    "storage_bucket": "quanlykhachsan-3309a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910247481153:android:dd579fb9cc40f40a991bc0",
+        "android_client_info": {
+          "package_name": "com.trinhtrung.quanlykhachsan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910247481153-sepoh2k6sn0bh8us4hgce0si22dj4q0t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trinhtrung.quanlykhachsan",
+            "certificate_hash": "c186fb45fad0579a4e2ef21e124b6b15a97ce0fd"
+          }
+        },
+        {
+          "client_id": "910247481153-ov3356klumj23nnoqgf074jv74k32suo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOgqmE5-hvVbik_FFMvDm11pfPT0MWoVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910247481153-ov3356klumj23nnoqgf074jv74k32suo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

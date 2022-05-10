@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_customer">
+
+    <fragment
+        android:id="@+id/nav_customer"
+        android:name="com.trinhtrung.quanlykhachsan.CustomerFragment"
+        android:label="@string/menu_customer"
+        tools:layout="@layout/fragment_customer" />
+    <fragment
+        android:id="@+id/nav_staff"
+        android:name="com.trinhtrung.quanlykhachsan.StaffFragment"
+        android:label="@string/menu_staff"
+        tools:layout="@layout/fragment_staff" />
+    <fragment
+        android:id="@+id/nav_room"
+        android:name="com.trinhtrung.quanlykhachsan.RoomFragment"
+        android:label="@string/menu_room"
+        tools:layout="@layout/fragment_room" />
+    <fragment
+        android:id="@+id/nav_hire"
+        android:name="com.trinhtrung.quanlykhachsan.HireFragment"
+        android:label="@string/menu_hire"
+        tools:layout="@layout/fragment_hire" />
+    <fragment
+        android:id="@+id/nav_service"
+        android:name="com.trinhtrung.quanlykhachsan.ServiceFragment"
+        android:label="@string/menu_service"
+        tools:layout="@layout/fragment_service" />
+
+    <fragment
+        android:id="@+id/nav_paymentInvoice"
+        android:name="com.trinhtrung.quanlykhachsan.PaymentInvoiceFragment"
+        android:label="@string/menu_paymentInvoice"
+        tools:layout="@layout/fragment_payment_invoice" />
+    <fragment
+        android:id="@+id/nav_billRoom"
+        android:name="com.trinhtrung.quanlykhachsan.BillRoomFragment"
+        android:label="@string/menu_billRoom"
+        tools:layout="@layout/fragment_bill" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.trinhtrung.quanlykhachsan.LogoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_change_password"
+        android:name="com.trinhtrung.quanlykhachsan.ChangePasswordFragment"
+        android:label="@string/menu_change_password"
+        tools:layout="@layout/fragment_change_password" />
+  <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.trinhtrung.quanlykhachsan.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

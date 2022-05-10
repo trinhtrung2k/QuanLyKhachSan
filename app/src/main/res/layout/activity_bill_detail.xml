@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="15dp"
+    android:elevation="12dp"
+    android:id="@+id/BillDetailContext"
+    tools:context=".activities.BillServiceDetailActivity"
+    android:layout_gravity="center_vertical"
+
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_BillServiceDetail"
+        android:background="@color/purple_700"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Bill dịch vụ"
+        app:titleTextColor="#D3AC1B"
+        />
+    <ProgressBar
+        android:id="@+id/progressbar_pdf1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:background="@drawable/stroke_linearlayout">
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edittext_background"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/alice"
+                android:text="Mã hoá đơn:"
+                android:textColor="@color/black"
+
+
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txt_bill_mahd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã hoá đơn"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên hoá đơn:"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                android:fontFamily="@font/alice"/>
+
+            <TextView
+                android:id="@+id/txt_bill_tenHD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:fontFamily="@font/alice"
+                android:text="Tên hoá đơn"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên nhân viên:"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                android:fontFamily="@font/alice"/>
+            <TextView
+                android:id="@+id/txt_bill_tenNV"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên nhân viên"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên dịch vụ:"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                android:fontFamily="@font/alice"/>
+            <TextView
+                android:id="@+id/txt_bill_tenDV"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên dịch vụ"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên khách hàng:"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/alice"/>
+            <TextView
+                android:id="@+id/txt_bill_tenKH"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên khách hàng"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giá dịch vụ(VNĐ) :"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/alice"/>
+            <TextView
+                android:id="@+id/txt_bill_giaDV"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Giá dịch vụ"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thành tiền(VNĐ): "
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                android:fontFamily="@font/alice"/>
+            <TextView
+                android:id="@+id/txt_bill_thanhtien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thành tiền"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_create_pdf1"
+            android:layout_gravity="center"
+            android:text="CREATE PDF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#80D8FF"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

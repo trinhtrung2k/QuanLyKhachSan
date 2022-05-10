@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.trinhtrung.quanlykhachsan" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.QuanLyKhachSan"
+        >
+        <activity
+            android:name=".activities.BillRoomDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.BillServiceDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddPaymentInvoiceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.EditServiceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddServiceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.EditHireActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddHireActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.EditStaffActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.EditCustomerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddStaffActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.EditRoomActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddRoomActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddCustomerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.RegistrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.SendEmailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities.HomeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.QuanLyKhachSan.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
