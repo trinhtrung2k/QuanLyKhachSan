@@ -126,7 +126,7 @@ public class StaffFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.GONE);
-        LoadListData();
+
         GetAllStaff();
     }
 

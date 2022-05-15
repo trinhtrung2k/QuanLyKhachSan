@@ -186,7 +186,7 @@ public class PaymentInvoiceFragment extends Fragment {
         ArrayList<BillServiceModel> billServiceModels1 = new ArrayList<>();
         for (BillServiceModel item: billServiceModels)
         {
-            if (item.getMaDV().toLowerCase().contains(text.toLowerCase())){
+            if (item.getMaHD().toLowerCase().contains(text.toLowerCase())){
                 billServiceModels1.add(item);
             }
 

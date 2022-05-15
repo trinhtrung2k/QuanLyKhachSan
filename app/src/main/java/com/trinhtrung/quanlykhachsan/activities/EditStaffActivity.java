@@ -10,18 +10,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,7 +31,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,15 +39,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
-import com.trinhtrung.quanlykhachsan.Api.GetPathFromUi;
-import com.trinhtrung.quanlykhachsan.Api.VolleyMultipartRequest;
 import com.trinhtrung.quanlykhachsan.R;
 import com.trinhtrung.quanlykhachsan.models.StaffModel;
 
 import net.gotev.uploadservice.MultipartUploadRequest;
 import net.gotev.uploadservice.UploadNotificationConfig;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -255,15 +247,16 @@ public class EditStaffActivity extends AppCompatActivity {
             dialog.setCancelable(false);
         }
 
-        TextView tvTitle = dialog.findViewById(R.id.tv_title);
-        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail);
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
         tvTitle.setText("Bạn thực sự muốn xoá nhân viên " + tenNV.toString());
-        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK);
-        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel);
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnCancel.isSelected();
                 dialog.dismiss();
             }
         });
@@ -271,7 +264,7 @@ public class EditStaffActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
+                    btnOk.isSelected();
                     deleteStaff(String.valueOf(maNV));
                     dialog.dismiss();
                 }catch (Exception e){
@@ -416,7 +409,7 @@ public class EditStaffActivity extends AppCompatActivity {
         }
 
     }
-
+/*
 
     @Override
     protected void onRestart() {
@@ -452,5 +445,5 @@ public class EditStaffActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.d("onPause","onPause");
-    }
+    }*/
 }

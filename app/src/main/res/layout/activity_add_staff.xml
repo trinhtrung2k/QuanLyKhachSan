@@ -139,7 +139,7 @@
                 android:fontFamily="@font/alice" />
 
 
-            <EditText
+         <!--   <EditText
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -149,7 +149,15 @@
                 android:layout_weight="1"
                 android:inputType="text|textCapWords"
                 android:textSize="16sp"
-                android:fontFamily="@font/alice" />
+                android:fontFamily="@font/alice" />-->
+            <Spinner
+                style="@style/CodeFont"
+                android:layout_weight="1"
+                android:id="@+id/add_gioitinhNV"
+                android:entries="@array/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></Spinner>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

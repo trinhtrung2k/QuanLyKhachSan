@@ -16,7 +16,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +30,10 @@ import com.android.volley.toolbox.Volley;
 import com.trinhtrung.quanlykhachsan.R;
 import com.trinhtrung.quanlykhachsan.models.HireModel;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,17 +92,32 @@ public class EditHireActivity extends AppCompatActivity {
                 String strNgayDK = edtNgayDK.getText().toString().trim();
                 String strNgayDi = edtNgayDi.getText().toString().trim();
 
-                //   int phanXuong = Integer.parseInt(tempPX);
-                if (strNgayDen.isEmpty() || strNgayDK.isEmpty() || strNgayDi.isEmpty()){
-                    tv_message_edt_hire.setVisibility(View.VISIBLE);
-                    tv_message_edt_hire.setText("Vui Lòng nhập đủ thông tin, không được để trống");
-                    tv_message_edt_hire.setTextColor(getResources().getColor(R.color.red));
-                }
-                else{
-                    tv_message_edt_hire.setVisibility(View.GONE);
-                    UpdateHire();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date startDate = simpleDateFormat.parse(strNgayDen);
+                    Date registrationDate = simpleDateFormat.parse(strNgayDK);
+                    Date endDate = simpleDateFormat.parse(strNgayDi);
 
+                    if (strNgayDen.isEmpty() || strNgayDK.isEmpty() || strNgayDi.isEmpty()){
+                        tv_message_edt_hire.setVisibility(View.VISIBLE);
+                        tv_message_edt_hire.setText("Vui Lòng nhập đủ thông tin, không được để trống");
+                        tv_message_edt_hire.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    else if (registrationDate.before(startDate) || endDate.before(registrationDate) || endDate.before(startDate)){
+                        tv_message_edt_hire.setVisibility(View.VISIBLE);
+                        tv_message_edt_hire.setText("Sai login về thời gian");
+                        tv_message_edt_hire.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    else{
+                        tv_message_edt_hire.setVisibility(View.GONE);
+                        UpdateHire();
+
+                    }
+                }catch (ParseException e) {
+                    e.printStackTrace();
                 }
+                //   int phanXuong = Integer.parseInt(tempPX);
+
             }
         });
 
@@ -216,15 +232,17 @@ public class EditHireActivity extends AppCompatActivity {
             dialog.setCancelable(false);
         }
 
-        TextView tvTitle = dialog.findViewById(R.id.tv_title);
-        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail);
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
         tvTitle.setText("Bạn thực sự muốn xoá thông tin mã thuê " + maDK.toString());
-        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK);
-        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel);
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btnCancel.isSelected();
                 dialog.dismiss();
             }
         });
@@ -232,10 +250,11 @@ public class EditHireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
+                    btnOk.isSelected();
                     deleteHire(maDK,maKH,soPhong);
                     dialog.dismiss();
                 }catch (Exception e){
+
                     tvMessage.setVisibility(View.VISIBLE);
                     tvMessage.setText("Xoá không thành công do ràng buộc quan hệ");
                 }

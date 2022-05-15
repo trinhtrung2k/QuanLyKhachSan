@@ -46,6 +46,7 @@
 
 
             <EditText
+                style="@style/CodeFont"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -76,6 +77,7 @@
 
 
             <EditText
+                style="@style/CodeFont"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -104,6 +106,7 @@
 
 
             <EditText
+                style="@style/CodeFont"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -132,6 +135,7 @@
 
 
             <EditText
+                style="@style/CodeFont"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -160,18 +164,28 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/alice" />
 
-            <EditText
-                android:inputType="text|textCapWords"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
+<!--            <EditText-->
+<!--                style="@style/CodeFont"-->
+<!--                android:inputType="text|textCapWords"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:id="@+id/add_gioitinhKH"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+
+<!--                android:textSize="16sp"-->
+<!--                android:fontFamily="@font/alice" />-->
+
+            <Spinner
+                style="@style/CodeFont"
+                android:layout_weight="1"
                 android:id="@+id/add_gioitinhKH"
+                android:entries="@array/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:textSize="16sp"
-                android:fontFamily="@font/alice" />
+                ></Spinner>
         </LinearLayout>
 
         <LinearLayout
@@ -191,6 +205,7 @@
                 android:fontFamily="@font/alice" />
 
             <EditText
+                style="@style/CodeFont"
                 android:inputType="phone"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
@@ -220,6 +235,7 @@
                 android:fontFamily="@font/alice" />
 
             <EditText
+                style="@style/CodeFont"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
@@ -254,7 +270,6 @@
                 android:id="@+id/btn_add_kh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_margin="20dp"
                 android:text="Thêm"
                 android:backgroundTint="@color/black"

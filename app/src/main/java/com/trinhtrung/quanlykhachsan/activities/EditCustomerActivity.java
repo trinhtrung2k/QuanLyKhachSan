@@ -191,15 +191,17 @@ public class EditCustomerActivity extends AppCompatActivity {
             dialog.setCancelable(false);
         }
 
-        TextView tvTitle = dialog.findViewById(R.id.tv_title);
-        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail);
-        tvTitle.setText("Bạn thực sự muốn xoá công nhân " + tenKH.toString());
-        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK);
-        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel);
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
+        tvTitle.setText("Bạn thực sự muốn xoá khách hàng " + tenKH.toString());
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btnCancel.isSelected();
                 dialog.dismiss();
             }
         });
@@ -207,7 +209,7 @@ public class EditCustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
+                    btnOk.isSelected();
                     deleteCustomer(String.valueOf(maKH));
                     dialog.dismiss();
                 }catch (Exception e){

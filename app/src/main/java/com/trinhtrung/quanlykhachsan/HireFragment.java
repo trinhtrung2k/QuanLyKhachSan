@@ -146,8 +146,11 @@ public class HireFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.GONE);
 
-        GetAllHire();
+
+
         CheckTrangThaiPhong();
+        GetAllHire();
+
     }
 
     private void GetAllHire() {
@@ -297,10 +300,12 @@ public class HireFragment extends Fragment {
                 Log.d("dateNgayHT",dateNgayHT.toString());
                 if (dateNgayDK.before(dateNgayHT) && dateNgayDi.after(dateNgayHT) ){
                     CheckHireExist(String.valueOf(hireModelList.get(i).getSoPhong()));
+                    Log.d("CHECKHireExit",String.valueOf(hireModelList.get(i).getSoPhong() ));
 
 
                 }else {
                     CheckHireNoExist(String.valueOf(hireModelList.get(i).getSoPhong()));
+                    Log.d("CHECKHireNoExit",String.valueOf(hireModelList.get(i).getSoPhong() ));
                 }
 
             } catch (ParseException e) {

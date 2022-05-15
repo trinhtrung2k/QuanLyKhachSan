@@ -18,9 +18,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ import com.android.volley.toolbox.Volley;
 import com.trinhtrung.quanlykhachsan.R;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +51,10 @@ public class AddStaffActivity extends AppCompatActivity {
     private Button btnAdd;
     private TextView tv_message;
     private Toolbar toolbar ;
+
+    private Spinner spgender;
+    private ArrayList<String> dataGender = new ArrayList<>();
+    private String strSelectGender;
 
     String url = "http://192.168.1.12:8081/QuanLyKhachSan/insertDataStaff.php";
     @Override
@@ -67,7 +75,7 @@ public class AddStaffActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        setEventSpiner();
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +84,7 @@ public class AddStaffActivity extends AppCompatActivity {
                 String strHoNV= addHoNV.getText().toString().trim();
                 String strTenNV = addTenNV.getText().toString().trim();
                 String strNgaySinh = addNgaySinh.getText().toString().trim();
-                String strGioiTinh = addGioiTinh.getText().toString().trim();
+             //   String strGioiTinh = addGioiTinh.getText().toString().trim();
                 String strDiaChi = addDiaChi.getText().toString().trim();
                 String sdt = addSDT.getText().toString().trim();
                 String cccd = addCCCD.getText().toString().trim();
@@ -85,7 +93,7 @@ public class AddStaffActivity extends AppCompatActivity {
 
 
                 if (strMaNV.isEmpty() || strHoNV.isEmpty() || strTenNV.isEmpty() || strNgaySinh.isEmpty()
-                        || strGioiTinh.isEmpty() || sdt.isEmpty() || cccd.isEmpty()
+                        || strSelectGender == null || sdt.isEmpty() || cccd.isEmpty()
                         || strDiaChi.isEmpty()  || strChucVu.isEmpty()){
                     tv_message.setVisibility(View.VISIBLE);
                     tv_message.setText("Vui Lòng nhập đủ thông tin, không được để trống");
@@ -133,7 +141,7 @@ public class AddStaffActivity extends AppCompatActivity {
                 params.put("maNV", addMaNV.getText().toString().trim());
                 params.put("hoNV", addHoNV.getText().toString().trim());
                 params.put("tenNV", addTenNV.getText().toString().trim());
-                params.put("gioiTinh", addGioiTinh.getText().toString().trim());
+                params.put("gioiTinh", strSelectGender);
                 params.put("ngaySinh", addNgaySinh.getText().toString().trim());
                 params.put("diaChi", addDiaChi.getText().toString().trim());
                 params.put("sdt", addSDT.getText().toString().trim());
@@ -153,7 +161,7 @@ public class AddStaffActivity extends AppCompatActivity {
         addHoNV = findViewById(R.id.add_hoNV);
         addTenNV = findViewById(R.id.add_tenNV);
 
-        addGioiTinh = findViewById(R.id.add_gioitinhNV);
+        spgender = findViewById(R.id.add_gioitinhNV);
         addNgaySinh = findViewById(R.id.add_namsinhNV);
         addDiaChi = findViewById(R.id.add_diachiNV);
         addSDT = findViewById(R.id.add_sdtnv);
@@ -168,6 +176,27 @@ public class AddStaffActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_addStaff);
     }
 
+    private void setEventSpiner() {
+        KhoiTao();
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dataGender);
+        spgender.setAdapter(adapter);
+        spgender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                strSelectGender = spgender.getSelectedItem().toString();
+                Toast.makeText(AddStaffActivity.this, "bạn chọn giới tính " + dataGender.get(position), Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+    private void KhoiTao() {
+        dataGender.add("Nam");
+        dataGender.add("Nữ");
+
+    }
 
 }

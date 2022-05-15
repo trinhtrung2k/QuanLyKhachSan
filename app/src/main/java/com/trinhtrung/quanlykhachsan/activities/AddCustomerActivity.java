@@ -7,8 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +24,18 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.trinhtrung.quanlykhachsan.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddCustomerActivity extends AppCompatActivity {
-    private EditText addMaKH,addHoKH, addTenKH, addNgaySinh, addGioiTinh,addSDT, addCCCD;
+    private EditText addMaKH,addHoKH, addTenKH, addNgaySinh,addSDT, addCCCD;
     private Button btnAdd;
     private TextView tv_message;
     private Toolbar toolbar ;
+    private Spinner spgender;
+    private ArrayList<String> dataGender = new ArrayList<>();
+    private String strSelectGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             }
         });
 
+        setEventSpiner();
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +64,12 @@ public class AddCustomerActivity extends AppCompatActivity {
                 String strHoKH= addHoKH.getText().toString().trim();
                 String strTenKH = addTenKH.getText().toString().trim();
                 String strNgaySinh = addNgaySinh.getText().toString().trim();
-                String strGioiTinh = addGioiTinh.getText().toString().trim();
+            //    String strGioiTinh = spgender.getText().toString().trim();
                 String sdt = addSDT.getText().toString().trim();
                 String cccd = addCCCD.getText().toString().trim();
 
                 if (strMaKH.isEmpty() || strHoKH.isEmpty() || strTenKH.isEmpty() || strNgaySinh.isEmpty()
-                        || strGioiTinh.isEmpty() || sdt.isEmpty() || cccd.isEmpty()){
+                        || strSelectGender == null || sdt.isEmpty() || cccd.isEmpty()){
                     tv_message.setVisibility(View.VISIBLE);
                     tv_message.setText("Vui Lòng nhập đủ thông tin, không được để trống");
                     tv_message.setTextColor(getResources().getColor(R.color.red));
@@ -73,6 +81,29 @@ public class AddCustomerActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void setEventSpiner() {
+        KhoiTao();
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dataGender);
+        spgender.setAdapter(adapter);
+        spgender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                strSelectGender = spgender.getSelectedItem().toString();
+                Toast.makeText(AddCustomerActivity.this, "bạn chọn giới tính " + dataGender.get(position), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+    private void KhoiTao() {
+        dataGender.add("Nam");
+        dataGender.add("Nữ");
 
     }
 
@@ -109,7 +140,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                 params.put("hoKH", addHoKH.getText().toString().trim());
                 params.put("tenKH", addTenKH.getText().toString().trim());
                 params.put("ngaySinh", addNgaySinh.getText().toString().trim());
-                params.put("gioiTinh", addGioiTinh.getText().toString().trim());
+                params.put("gioiTinh",strSelectGender);
                 params.put("sdt", addSDT.getText().toString().trim());
                 params.put("cccd", addCCCD.getText().toString().trim());
                 return params;
@@ -124,7 +155,7 @@ public class AddCustomerActivity extends AppCompatActivity {
         addHoKH = findViewById(R.id.add_hokh);
         addTenKH = findViewById(R.id.add_tenkh);
         addNgaySinh = findViewById(R.id.add_ngaysinhKH);
-        addGioiTinh = findViewById(R.id.add_gioitinhKH);
+        spgender = findViewById(R.id.add_gioitinhKH);
         addSDT = findViewById(R.id.add_sdtKH);
         addCCCD = findViewById(R.id.add_cccdKH);
         btnAdd = findViewById(R.id.btn_add_kh);

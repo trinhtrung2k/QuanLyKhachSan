@@ -28,4 +28,8 @@
         <item>Chưa được thuê</item>
 
     </array>
+    <array name="gender">
+        <item>Nam</item>
+        <item>Nữ</item>
+    </array>
 </resources>

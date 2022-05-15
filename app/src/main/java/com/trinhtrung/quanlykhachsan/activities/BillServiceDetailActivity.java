@@ -1,5 +1,6 @@
 package com.trinhtrung.quanlykhachsan.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -27,6 +28,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.itextpdf.barcodes.BarcodeQRCode;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
@@ -58,10 +66,12 @@ import java.io.OutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BillServiceDetailActivity extends AppCompatActivity {
     private TextView txtMaHD, txtTenHD, txtTenNV, txtTenDV, txtTenKH, txtGiaDV, txtThanhTien;
-    private Button btnCreatePdf;
+    private Button btnCreatePdf , btnDelete;
     private ProgressBar progressBar;
     private Toolbar toolbar ;
     private String strMaHD,strTenHD,strTenNV,strTenDV,strtenKH,strGiaDV,strThanhTien;
@@ -94,6 +104,12 @@ public class BillServiceDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 confirmPrint(strMaHD,strTenHD,strTenNV,strTenDV,strtenKH,strGiaDV,strThanhTien);
+            }
+        });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConfirmDeteleRoom(strMaHD);
             }
         });
 
@@ -138,6 +154,8 @@ public class BillServiceDetailActivity extends AppCompatActivity {
         btnCreatePdf = findViewById(R.id.btn_create_pdf1);
         progressBar = findViewById(R.id.progressbar_pdf1);
         toolbar = findViewById(R.id.toolbar_BillServiceDetail);
+        btnDelete = findViewById(R.id.btn_bill_delete);
+
 
     }
 
@@ -155,10 +173,10 @@ public class BillServiceDetailActivity extends AppCompatActivity {
         Document document = new Document(pdfDocument);
         pdfDocument.setDefaultPageSize(PageSize.A6);
         document.setMargins(0,0,0,0);
-        Drawable d = ContextCompat.getDrawable(BillServiceDetailActivity.this,R.drawable.businessman);
+        Drawable d = ContextCompat.getDrawable(BillServiceDetailActivity.this,R.drawable.invoice_pdf);
         Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100,stream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 80,stream);
         byte[] bitmapData = stream.toByteArray();
         ImageData imageData = ImageDataFactory.create(bitmapData);
         Image image = new Image(imageData);
@@ -262,17 +280,19 @@ public class BillServiceDetailActivity extends AppCompatActivity {
             dialog.setCancelable(false);
         }
 
-        TextView tvTitle = dialog.findViewById(R.id.tv_title);
-        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail);
-        EditText edtFileName = dialog.findViewById(R.id.edt_filename);
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
+        EditText edtFileName = dialog.findViewById(R.id.edt_filename_pdf);
 
         tvTitle.setText("Bạn có muốn tạo file PDF cho bill của khách hàng:  " + tenKH.toString());
-        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK);
-        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel);
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btnCancel.isSelected();
                 dialog.dismiss();
             }
         });
@@ -280,7 +300,7 @@ public class BillServiceDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
+                    btnCancel.isSelected();
                     ActivityCompat.requestPermissions(BillServiceDetailActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
                     , Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
@@ -301,6 +321,99 @@ public class BillServiceDetailActivity extends AppCompatActivity {
         });
 
         dialog.show();
+
+    }
+
+    public void deleteHoaDonService(String maHD ){
+
+
+        String urlDelete = "http://192.168.1.12:8081/QuanLyKhachSan/deleteDataBillService.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDelete, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.trim().equals("success")){
+                    Toast.makeText(BillServiceDetailActivity.this, "success", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else {
+                    Toast.makeText(BillServiceDetailActivity.this, "Hóa đơn dịch vụ này đang chứa thông tin trong bảng khác", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(BillServiceDetailActivity.this, "Xảy ra lỗi : " + error, Toast.LENGTH_LONG).show();
+
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<>();
+                map.put("maHDDelete",maHD);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void ConfirmDeteleRoom(String strMaHD) {
+
+        Dialog dialog = new Dialog(BillServiceDetailActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_feeback);
+        Window window = dialog.getWindow();
+        if (window == null){
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes  =window.getAttributes();
+        windowAttributes.gravity = Gravity.CENTER;
+        window.setAttributes(windowAttributes);
+
+        //khi click ra ngoai thi se thoat
+        if (Gravity.CENTER == Gravity.CENTER){
+            dialog.setCancelable(true);
+        }else {
+            dialog.setCancelable(false);
+        }
+
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
+        tvTitle.setText("Bạn thực sự muốn xoá hóa đơn mã " + strMaHD.toString());
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                btnCancel.isSelected();
+                dialog.dismiss();
+            }
+        });
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    btnOk.isSelected();
+                    deleteHoaDonService(strMaHD);
+                    dialog.dismiss();
+                }catch (Exception e){
+                    tvMessage.setVisibility(View.VISIBLE);
+                    tvMessage.setText("Xoá không thành công do ràng buộc quan hệ");
+                }
+
+            }
+        });
+
+        dialog.show();
+
+
 
     }
 }

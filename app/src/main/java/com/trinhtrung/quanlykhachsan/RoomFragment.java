@@ -206,7 +206,7 @@ public class RoomFragment extends Fragment {
         LoadListData();
     }
 
-    @Override
+   /* @Override
     public void onDestroy() {
         super.onDestroy();
         Log.d("onnnnDestroyFragment","onDestroy");
@@ -230,5 +230,5 @@ public class RoomFragment extends Fragment {
     public void onPause() {
         super.onPause();
         Log.d("onnnnPauseFragment","onPause");
-    }
+    }*/
 }

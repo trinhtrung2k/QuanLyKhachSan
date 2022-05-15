@@ -143,7 +143,9 @@ public class BillRoomFragment extends Fragment {
                                 object.getString("TenKH"),
                                 object.getInt("SoPhong"),
                                 object.getString("LoaiPhong"),
-                                object.getInt("GiaPhong")
+                                object.getInt("GiaPhong"),
+                                object.getString("NgayDK"),
+                                object.getString("NgayDi")
 
 
                         ));

@@ -35,9 +35,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,17 +112,34 @@ public class AddHireActivity extends AppCompatActivity {
                 String strNgayDK = addGNgayDK.getText().toString().trim();
                 String strNgayDi = addNgayDi.getText().toString().trim();
 
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date startDate = simpleDateFormat.parse(strNgayDen);
+                    Date registrationDate = simpleDateFormat.parse(strNgayDK);
+                    Date endDate = simpleDateFormat.parse(strNgayDi);
 
-                if (strMaDK.isEmpty() ||strSelectMaKH == null || strSelectSoPhong == null || strNgayDen.isEmpty()
-                        || strNgayDK.isEmpty() || strNgayDi.isEmpty() || strSelectMaKH == null){
-                    tv_message.setVisibility(View.VISIBLE);
-                    tv_message.setText("Vui Lòng nhập đủ thông tin, không được để trống");
-                    tv_message.setTextColor(getResources().getColor(R.color.red));
+                    if (strMaDK.isEmpty() ||strSelectMaKH == null || strSelectSoPhong == null || strNgayDen.isEmpty()
+                            || strNgayDK.isEmpty() || strNgayDi.isEmpty() || strSelectMaKH == null){
+                        tv_message.setVisibility(View.VISIBLE);
+                        tv_message.setText("Vui Lòng nhập đủ thông tin, không được để trống");
+                        tv_message.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    else if (registrationDate.before(startDate) || endDate.before(registrationDate) || endDate.before(startDate)){
+                        tv_message.setVisibility(View.VISIBLE);
+                        tv_message.setText("Sai login về thời gian");
+                        tv_message.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    else{
+                        tv_message.setVisibility(View.GONE);
+                        insertHire();
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-                else{
-                    tv_message.setVisibility(View.GONE);
-                    insertHire();
-                }
+
+
+
             }
         });
 

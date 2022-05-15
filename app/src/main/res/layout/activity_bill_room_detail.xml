@@ -184,6 +184,35 @@
         </LinearLayout>
 
         <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edittext_background"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginLeft="7dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ngày bắt đầu thuê:"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/alice"/>
+        <TextView
+            android:id="@+id/txt_billroom_ngayDK"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ngày bắt đầu thuê"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/alice"/>
+    </LinearLayout>
+        <LinearLayout
 
             android:background="@drawable/edittext_background"
             android:layout_width="325dp"
@@ -193,18 +222,47 @@
                 android:layout_marginLeft="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thành tiền(VNĐ): "
+                android:text="Ngày trả phòng:"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:textSize="18sp"
 
                 android:fontFamily="@font/alice"/>
             <TextView
-                android:id="@+id/txt_billroom_thanhtien"
+                android:id="@+id/txt_billroom_ngayDi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Thành tiền"
+                android:text="Ngày trả phòng"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/alice"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="7dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thành tiền (VNĐ):"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/alice"/>
+            <TextView
+                android:id="@+id/txt_billroom_thanhTien"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thành tiền  (VNĐ)"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
@@ -216,6 +274,6 @@
             android:text="CREATE PDF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#80D8FF"/>
+            android:backgroundTint="@color/button_background_add_edit"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

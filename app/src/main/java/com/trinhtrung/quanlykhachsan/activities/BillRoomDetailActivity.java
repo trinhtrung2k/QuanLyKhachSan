@@ -55,16 +55,19 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class BillRoomDetailActivity extends AppCompatActivity {
-    private TextView txtMaKH, txtTenKH, txtSoPhong, txtLoaiPhong, txtGiaPhong, txtThanhTien;
+    private TextView txtMaKH, txtTenKH, txtSoPhong, txtLoaiPhong, txtGiaPhong, txtNgayDK, txtNgayDi, txtThanhTien;
     private Button btnCreatePdf;
     private ProgressBar progressBar;
     private Toolbar toolbar ;
-    private String strMaKH,strTenKH, strTenKH1,strSoPhong,strLoaiPhong,strGiaPhong,strThanhTien;
+    private String strMaKH,strTenKH, strTenKH1,strSoPhong,strLoaiPhong,strGiaPhong,strNgayDK,strNgayDi,strThanhTien;
     // private List<BillServiceModel> billServiceModelList;
 
 
@@ -92,7 +95,7 @@ public class BillRoomDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                confirmPrint(strMaKH,strTenKH,strTenKH1,strSoPhong,strLoaiPhong,strGiaPhong,strThanhTien);
+                confirmPrint(strMaKH,strTenKH,strTenKH1,strSoPhong,strLoaiPhong,strGiaPhong, strNgayDK, strNgayDi,strThanhTien);
             }
         });
 
@@ -107,10 +110,32 @@ public class BillRoomDetailActivity extends AppCompatActivity {
         txtSoPhong.setText(String.valueOf(billRoomModel.getSoPhong()));
         txtLoaiPhong.setText(billRoomModel.getLoaiPhong());
         txtGiaPhong.setText(String.valueOf(billRoomModel.getGiaPhong()));
+        txtNgayDK.setText(String.valueOf(billRoomModel.getNgayDK()));
+        txtNgayDi.setText(String.valueOf(billRoomModel.getNgayDi()));
+
+        //tinh so ngay
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date dateNgayDK = sdf.parse(billRoomModel.getNgayDK());
+            Date dateNgayDi = sdf.parse(billRoomModel.getNgayDi());
+            long startValue = dateNgayDK.getTime();
+            long endValue = dateNgayDi.getTime();
+            long tmp = Math.abs(startValue-endValue);
+
+            long resultDay = tmp/(24*60*60*1000);
+            long totalPrice = (long) ((billRoomModel.getGiaPhong() * resultDay));
+            txtThanhTien.setText(String.valueOf(totalPrice));
+            strThanhTien = String.valueOf(totalPrice);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
-        int a1 = (int) ((billRoomModel.getGiaPhong()));
-        txtThanhTien.setText(String.valueOf(a1));
+
+
+
+
 
         strMaKH = billRoomModel.getMaKH();
         strTenKH = billRoomModel.getHoKH() + " "+ billRoomModel.getTenKH();
@@ -119,7 +144,9 @@ public class BillRoomDetailActivity extends AppCompatActivity {
         strLoaiPhong = billRoomModel.getLoaiPhong();
 
         strGiaPhong = String.valueOf(billRoomModel.getGiaPhong());
-        strThanhTien = String.valueOf(a1);
+        strNgayDK = billRoomModel.getNgayDK();
+        strNgayDi = billRoomModel.getNgayDi();
+
 
     }
 
@@ -130,7 +157,11 @@ public class BillRoomDetailActivity extends AppCompatActivity {
         txtSoPhong = findViewById(R.id.txt_billroom_soPhong);
         txtLoaiPhong = findViewById(R.id.txt_billroom_loaiPhong);
         txtGiaPhong = findViewById(R.id.txt_billroom_giaPhong);
-        txtThanhTien = findViewById(R.id.txt_billroom_thanhtien);
+        txtNgayDK = findViewById(R.id.txt_billroom_ngayDK);
+        txtNgayDi = findViewById(R.id.txt_billroom_ngayDi);
+
+
+        txtThanhTien = findViewById(R.id.txt_billroom_thanhTien);
 
 
         btnCreatePdf = findViewById(R.id.btn_create_pdf);
@@ -140,7 +171,7 @@ public class BillRoomDetailActivity extends AppCompatActivity {
     }
 
     private void createPdf(String maKH, String tenKH, String soPhong, String loaiPhong,
-                           String giaPhong, String thanhTien,String tenFile) throws FileNotFoundException {
+                           String giaPhong, String ngayDK, String NgayDi, String thanhTien,String tenFile) throws FileNotFoundException {
 
         //DIRECTORY_DOWNLOADS
         //Thư mục tiêu chuẩn để đặt các tệp đã được người dùng tải xuống
@@ -153,7 +184,7 @@ public class BillRoomDetailActivity extends AppCompatActivity {
         Document document = new Document(pdfDocument);
         pdfDocument.setDefaultPageSize(PageSize.A6);
         document.setMargins(0,0,0,0);
-        Drawable d = ContextCompat.getDrawable(BillRoomDetailActivity.this,R.drawable.businessman);
+        Drawable d = ContextCompat.getDrawable(BillRoomDetailActivity.this,R.drawable.invoice_pdf);
         Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100,stream);
@@ -161,7 +192,7 @@ public class BillRoomDetailActivity extends AppCompatActivity {
         ImageData imageData = ImageDataFactory.create(bitmapData);
         Image image = new Image(imageData);
 
-        Paragraph reportSalary = new Paragraph("Report Bill Service").setBold().setFontSize(24)
+        Paragraph reportSalary = new Paragraph("Report Bill Room").setBold().setFontSize(24)
                 .setTextAlignment(TextAlignment.CENTER);
         PdfFont font = null;
 
@@ -200,6 +231,14 @@ public class BillRoomDetailActivity extends AppCompatActivity {
         table.addCell(new Cell().add(new Paragraph(giaPhong)));
 
 
+        table.addCell(new Cell().add(new Paragraph("Ngày bắt đầu thuê").setFont(font)));
+        table.addCell(new Cell().add(new Paragraph(ngayDK)));
+
+
+        table.addCell(new Cell().add(new Paragraph("Ngày kết thúc thuê").setFont(font)));
+        table.addCell(new Cell().add(new Paragraph(NgayDi)));
+
+
         table.addCell(new Cell().add(new Paragraph("Thành tiền").setFont(font)));
         table.addCell(new Cell().add(new Paragraph(thanhTien).setFont(font)));
 
@@ -234,7 +273,7 @@ public class BillRoomDetailActivity extends AppCompatActivity {
     }
 
     private void confirmPrint(String maKH, String tenKH,String tenKH1, String soPhong, String loaiPhong,
-                              String giaPhong, String thanhTien){
+                              String giaPhong, String ngayDK, String NgayDi,String thanhTien){
         Dialog dialog = new Dialog(BillRoomDetailActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.layout_dialog_print_pdf);
@@ -256,17 +295,19 @@ public class BillRoomDetailActivity extends AppCompatActivity {
             dialog.setCancelable(false);
         }
 
-        TextView tvTitle = dialog.findViewById(R.id.tv_title);
-        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail);
-        EditText edtFileName = dialog.findViewById(R.id.edt_filename);
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
+        EditText edtFileName = dialog.findViewById(R.id.edt_filename_pdf);
 
         tvTitle.setText("Bạn có muốn tạo file PDF cho bill của khách hàng:  " + tenKH.toString());
-        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK);
-        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel);
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btnCancel.isSelected();
                 dialog.dismiss();
             }
         });
@@ -275,6 +316,8 @@ public class BillRoomDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
 
+
+                    btnOk.isSelected();
                     ActivityCompat.requestPermissions(BillRoomDetailActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
                             , Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
@@ -283,7 +326,7 @@ public class BillRoomDetailActivity extends AppCompatActivity {
                         strFileName = maKH + tenKH1 ;
                     }
                     createPdf( maKH,  tenKH,  soPhong,  loaiPhong,
-                             giaPhong,  thanhTien,strFileName);
+                             giaPhong, ngayDK, NgayDi,  thanhTien,strFileName);
                     dialog.dismiss();
                 }catch (Exception e){
                     Log.d("checkPDF", e.toString());

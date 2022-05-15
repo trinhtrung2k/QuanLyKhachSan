@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -179,15 +178,17 @@ public class EditRoomActivity extends AppCompatActivity {
             dialog.setCancelable(false);
         }
 
-        TextView tvTitle = dialog.findViewById(R.id.tv_title);
-        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail);
+        TextView tvTitle = dialog.findViewById(R.id.tv_title_pdf);
+        TextView tvMessage = dialog.findViewById(R.id.tv_add_Fail_pdf);
         tvTitle.setText("Bạn thực sự muốn xoá phòng " + soPhong.toString());
-        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK);
-        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel);
+        Button btnOk = dialog.findViewById(R.id.btn_dialog_OK_pdf);
+        Button btnCancel = dialog.findViewById(R.id.btn_dialog_Cancel_pdf);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btnCancel.isSelected();
                 dialog.dismiss();
             }
         });
@@ -195,7 +196,7 @@ public class EditRoomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
+                    btnOk.isSelected();
                     deleteRoom(soPhong);
                     dialog.dismiss();
                 }catch (Exception e){
@@ -246,7 +247,7 @@ public class EditRoomActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
+/*
 
     @Override
     public void onResume(){
@@ -276,6 +277,6 @@ public class EditRoomActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         Log.d("onPause","onPause");
-    }
+    }*/
 
 }

@@ -23,7 +23,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_title_pdf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_white_corner"
@@ -33,7 +33,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tv_add_Fail"
+            android:id="@+id/tv_add_Fail_pdf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -52,23 +52,22 @@
 
             <Button
 
-                android:id="@+id/btn_dialog_OK"
+                android:id="@+id/btn_dialog_OK_pdf"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_button_yellow_corner"
+                android:backgroundTint="@color/button_background"
                 android:text="Đồng ý"
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/btn_dialog_Cancel"
+                android:id="@+id/btn_dialog_Cancel_pdf"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:alpha="0.4"
-                android:background="@drawable/bg_button_gray_corner"
+                android:backgroundTint="@color/button_background"
                 android:text="Thoát"
                 android:textSize="14sp" />
         </LinearLayout>

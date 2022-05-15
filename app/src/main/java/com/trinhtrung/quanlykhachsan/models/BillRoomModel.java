@@ -9,17 +9,21 @@ public class BillRoomModel implements Serializable {
     int soPhong;
     String loaiPhong;
     int giaPhong;
+    String ngayDK;
+    String ngayDi;
 
     public BillRoomModel() {
     }
 
-    public BillRoomModel(String maKH, String hoKH, String tenKH, int soPhong, String loaiPhong, int giaPhong) {
+    public BillRoomModel(String maKH, String hoKH, String tenKH, int soPhong, String loaiPhong, int giaPhong, String ngayDK, String ngayDi) {
         this.maKH = maKH;
         this.hoKH = hoKH;
         this.tenKH = tenKH;
         this.soPhong = soPhong;
         this.loaiPhong = loaiPhong;
         this.giaPhong = giaPhong;
+        this.ngayDK = ngayDK;
+        this.ngayDi = ngayDi;
     }
 
     public String getMaKH() {
@@ -68,5 +72,21 @@ public class BillRoomModel implements Serializable {
 
     public void setHoKH(String hoKH) {
         this.hoKH = hoKH;
+    }
+
+    public String getNgayDK() {
+        return ngayDK;
+    }
+
+    public void setNgayDK(String ngayDK) {
+        this.ngayDK = ngayDK;
+    }
+
+    public String getNgayDi() {
+        return ngayDi;
+    }
+
+    public void setNgayDi(String ngayDi) {
+        this.ngayDi = ngayDi;
     }
 }

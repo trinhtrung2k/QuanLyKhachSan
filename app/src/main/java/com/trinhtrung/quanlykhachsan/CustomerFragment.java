@@ -49,8 +49,6 @@ public class CustomerFragment extends Fragment {
 
 
 
-
-
     public CustomerFragment() {
     }
 
